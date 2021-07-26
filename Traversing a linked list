@@ -1,0 +1,35 @@
+                                        /*..................পরম করুনাময় অসীম দয়ালু আল্লাহ্‌র নামে শুরু করতেছি...............*/ 
+#include<stdio.h>
+#include<stdlib.h>
+typedef struct node Node;
+
+struct node{
+    int data;
+    Node *next;
+};
+
+int main()
+{
+    Node *A,*B,*C,*H;
+
+    A=(Node*)malloc(sizeof(Node));
+    B=(Node*)malloc(sizeof(Node));
+    C=(Node*)malloc(sizeof(Node));
+
+    A->data=10;
+    A->next=B;
+
+    B->data=20;
+    B->next=C;
+
+    C->data=30;
+    C->next=NULL;
+
+    H=A;
+    while(H!=NULL)
+    {
+        printf("%d\n",H->data);
+        H=H->next;
+    }
+    return 0;
+}
