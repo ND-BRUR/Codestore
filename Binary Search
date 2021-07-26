@@ -1,0 +1,59 @@
+                                                   /*..................পরম করুনাময় অসীম দয়ালু আল্লাহ্‌র নামে শুরু করতেছি...............*/ 
+#include<stdio.h>
+int binary_searching(int a[],int n, int x)
+{
+    int left,mid,right;
+    left=0;
+    right=n-1;
+    while(left<=right)
+    {
+        mid=(left+right)/2;
+        if(a[mid]==x)
+        {
+            return mid;
+        }
+        else if(x<a[mid])
+        {
+           right=mid-1;
+        }
+        else
+        {
+            left=mid+1;
+        }
+    }
+    return -1;
+}
+int main()
+{
+    int n,i,j,x,t,a[100000],r;
+    scanf("%d",&n);
+    for(i=0;i<n;i++)
+    {
+        scanf("%d",&a[i]);
+    }
+    //to perform a binary search we will need a sorted array
+    for(i=0;i<n;i++)
+    {
+        for(j=0;j<n-i-1;j++)
+        {
+            if(a[j]>a[j+1])
+            {
+                t=a[j];
+                a[j]=a[j+1];
+                a[j+1]=t;
+            }
+        }
+    }
+    printf("please enter the number you want to search in the array:\n");
+    scanf("%d",&x);
+    r=binary_searching(a,n,x);
+    if(r!=-1)
+    {
+        printf("The number found at position: %d\n",r+1);
+    }
+    else
+    {
+        printf("Oops!!! the number not found in the array.");
+    }
+    return 0;
+}
