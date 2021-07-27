@@ -1,0 +1,48 @@
+                                                    /*..................পরম করুনাময় অসীম দয়ালু আল্লাহ্‌র নামে শুরু করতেছি...............*/ 
+#include<stdio.h>
+
+void Swap(int *a,int *b)
+{
+    int t=*a;
+    *a=*b;
+    *b=t;
+}
+
+int Partition(int a[],int low,int high)
+{
+    int pivot,i,j;
+    pivot=a[high];
+    for(i=low-1,j=low;j<high;j++)
+    {
+        if(a[j]<pivot)
+        {
+            i+=1;
+            Swap(&a[i],&a[j]);
+        }
+    }
+    Swap(&a[i+1],&a[high]);
+    return i+1;
+}
+
+void quick_sort(int a[],int low,int high)
+{
+    if(low>=high)
+    {
+        return;
+    }
+    int p=Partition(a,low,high);
+    quick_sort(a,low,p-1);
+    quick_sort(a,p+1,high);
+}
+
+int main()
+{
+    int a[]={5,13,8,7,6,9,1,3},n,i;
+    n=sizeof(a)/sizeof(a[0]);
+    quick_sort(a,0,n-1);
+    for(i=0;i<n;i++)
+    {
+        printf("%d\n",a[i]);
+    }
+    return 0;
+}
