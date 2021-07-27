@@ -1,0 +1,18 @@
+                                                         /*..................পরম করুনাময় অসীম দয়ালু আল্লাহ্‌র নামে শুরু করতেছি...............*/ 
+#include<stdio.h>
+int fibo(int n)
+{
+    if(n<=1)
+    {
+        return n;
+    }
+    return fibo(n-1)+fibo(n-2);
+}
+int main()
+{
+    int n,r;
+    scanf("%d",&n);
+    r=fibo(n);
+    printf("%d\n",r);
+    return 0;
+}
