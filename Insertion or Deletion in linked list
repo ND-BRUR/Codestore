@@ -1,0 +1,93 @@
+                                                 /*..................পরম করুনাময় অসীম দয়ালু আল্লাহ্‌র নামে শুরু করতেছি...............*/ 
+#include<stdio.h>
+#include<stdlib.h>
+typedef struct node Node;
+struct node{
+    int data;
+    Node *next;
+};
+Node *create_node(int item,Node *node)
+{
+    Node *new_node=(Node*)malloc(sizeof(Node));
+    if(new_node==NULL)
+    {
+        printf("Error!! could not create a new node\n");
+        exit(1);
+    }
+    new_node->data=item;
+    new_node->next=node;
+    return new_node;
+}
+Node *prepend(Node *head,int item)
+{
+    Node *new_node=create_node(item,head);
+    return new_node;
+}
+void insert_node(Node *node,int item)
+{
+    Node *new_node=create_node(item,node->next);
+    node->next=new_node;
+}
+Node *append(Node *head,int item)
+{
+    Node *new_node=create_node(item,NULL);
+    if(head==NULL)
+    {
+        return new_node;
+    }
+    Node *current_node=head;
+    while(current_node->next!=NULL)
+    {
+        current_node=current_node->next;
+    }
+    current_node->next=new_node;
+    return head;
+}
+void traverse(Node *head)
+{
+    Node *current_node=head;
+    while(current_node!=NULL)
+    {
+        printf("%d\n",current_node->data);
+        current_node=current_node->next;
+    }
+}
+Node *remove_node(Node *head,Node *node)
+{
+    if(head==node)
+    {
+        head=node->next;
+        free(node);
+        return head;
+    }
+    Node *current_node=head;
+    while(current_node!=NULL)
+    {
+        if(current_node->next==node)
+        {
+            break;
+        }
+        current_node=current_node->next;
+    }
+    if(current_node==NULL)
+    {
+        return head;
+    }
+    current_node->next=node->next;
+    free(node);
+    return head;
+}
+int main()
+{
+    Node *head=create_node(10,NULL);
+    head=prepend(head,5);
+    head=append(head,20);
+    Node *current_node=head->next;
+    insert_node(current_node,15);
+    traverse(head);
+    printf("After removing node\n");
+    Node *current_node2=head->next;
+    head=remove_node(head,current_node2);
+    traverse(head);
+    return 0;
+}
