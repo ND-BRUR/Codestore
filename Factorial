@@ -1,0 +1,22 @@
+                                                     /*..................পরম করুনাময় অসীম দয়ালু আল্লাহ্‌র নামে শুরু করতেছি...............*/ 
+#include<stdio.h>
+int factorial(int n)
+{
+    if(n==1)
+    {
+        return 1;
+    }
+    else
+    {
+        return n*factorial(n-1);
+    }
+}
+int main()
+{
+    int n,r;
+    printf("Please enter the number that you wanna find factorial\n");
+    scanf("%d",&n);
+    r=factorial(n);
+    printf("The factorial of %d is: %d",n,r);
+    return 0;
+}
